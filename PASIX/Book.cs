@@ -8,6 +8,7 @@ namespace PASIX
 {
     class Book
     {
+        //getters and setters
         public String cwid { get; set; }
         public String isbn { get; set; }
         public String title { get; set; }
@@ -18,7 +19,7 @@ namespace PASIX
         public int copies { get; set; }
         public String _id { get; set; }
 
-        public Book(string cwid, string isbn, string title, string author, string cover, string genre, int length, int copies, string id)
+        public Book(string cwid, string isbn, string title, string author, string cover, string genre, int length, int copies, string id) //constructor
         {
             this.cwid = cwid;
             this.isbn = isbn;
@@ -31,12 +32,12 @@ namespace PASIX
             _id = id;
         }
 
-        public Book()
+        public Book() //default constructor
         {
 
         }
 
-        public override string ToString()
+        public override string ToString() //converts to a string
         {
             return this.title;
         }

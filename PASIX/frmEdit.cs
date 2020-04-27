@@ -12,21 +12,21 @@ namespace PASIX
 {
     public partial class frmEdit : Form
     {
-        private Book myBook;
+        private Book myBook; //instance variable
         private string cwid;
-        private string mode;
-        public frmEdit(Object tempBook, string tempMode, string tempCwid)
+        private string mode; //new book or editing exsiting book
+        public frmEdit(Object tempBook, string tempMode, string tempCwid) //constructor
         {
-            myBook = (Book)tempBook;
+            myBook = (Book)tempBook; //cast book
             cwid = tempCwid;
             mode = tempMode;
             InitializeComponent();
-            pbCover.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbCover.SizeMode = PictureBoxSizeMode.StretchImage; //sets image to fitting size
         }
 
-        private void frmEdit_Load(object sender, EventArgs e)
+        private void frmEdit_Load(object sender, EventArgs e) //load method
         {
-            if(mode == "edit")
+            if(mode == "edit") //set text fields
             {
                 txtTitleData.Text = myBook.title;
                 txtAuthorData.Text = myBook.genre;
@@ -40,13 +40,14 @@ namespace PASIX
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e) 
         {
-            this.Close();
+            this.Close(); //closes form
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //sets whats in the object equal to what is in the textbox
             myBook.title = txtTitleData.Text;
             myBook.genre = txtAuthorData.Text;
             myBook.genre = txtGenreData.Text;
@@ -56,10 +57,10 @@ namespace PASIX
             myBook.length = int.Parse(txtLengthData.Text);
             myBook.cwid = cwid;
 
-            BookFile.SaveBook(myBook, cwid, mode);
+            BookFile.SaveBook(myBook, cwid, mode); //save
 
-            MessageBox.Show("Content was saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            MessageBox.Show("Content was saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information); //message that shows the user it was saved
+            this.Close(); //close
 
         }
     }
